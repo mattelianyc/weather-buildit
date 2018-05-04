@@ -29,7 +29,7 @@
             
             .data-city-name {
                 font-family: ChaletLondonNineteenSeventy;
-                color: rgba(191,43,48,0.8);
+                color: rgba(4,34,121,1);
                 font-size:128px;
             }
             
@@ -58,7 +58,14 @@
                     /*border: 1px solid #e3e3e3;*/
                 }
                 .well.active {
-                    border: 1px solid blue !important;
+                    border: 2px solid rgb(191,43,48) !important;
+                    color: rgba(191,43,48,1);
+                }
+                
+                .data-temp {
+                    position: relative;
+                    top: 24px;
+                    font-size: 72px;
                 }
                 
                 @media (max-width: 768px) {
@@ -194,20 +201,20 @@
                 console.log(moment().format());
                 
                 console.log(moment().add(1, 'days'));
-                $('#Desktop-5-Day-Forecast > .well > .day-1-marker').html('<h3 class="pull-left">'+moment().add(1, 'days').format('L')+'</h3><h2 class="pull-right">'+data.list[6].main.temp+'</h2>');
-                $('#Mobile-5-Day-Forecast > .well > .day-1-marker').html('<h3 class="pull-left">'+moment().add(1, 'days').format('L')+'</h3><h2 class="pull-right">'+data.list[6].main.temp+'</h2>');
+                $('#Desktop-5-Day-Forecast > .well > .day-1-marker').html('<h3 class="pull-left">'+moment().add(1, 'days').format('L')+'</h3><h2 class="pull-right data-temp">'+(data.list[6].main.temp - 273.15).toFixed(0)+'&deg;'+'C</h2>');
+                $('#Mobile-5-Day-Forecast > .well > .day-1-marker').html('<h3 class="pull-left">'+moment().add(1, 'days').format('L')+'</h3><h2 class="pull-right data-temp">'+(data.list[6].main.temp - 273.15).toFixed(0)+'&deg;'+'C</h2>');
                 console.log(moment().add(2, 'days').format('L'));
-                $('#Desktop-5-Day-Forecast > .well > .day-2-marker').html('<h3 class="pull-left">'+moment().add(2, 'days').format('L')+'</h3><h2 class="pull-right">'+data.list[13].main.temp+'</h2>');
-                $('#Mobile-5-Day-Forecast > .well > .day-2-marker').html('<h3 class="pull-left">'+moment().add(2, 'days').format('L')+'</h3><h2 class="pull-right">'+data.list[13].main.temp+'</h2>');
+                $('#Desktop-5-Day-Forecast > .well > .day-2-marker').html('<h3 class="pull-left">'+moment().add(2, 'days').format('L')+'</h3><h2 class="pull-right data-temp">'+(data.list[13].main.temp - 273.15).toFixed(0)+'&deg;'+'C</h2>');
+                $('#Mobile-5-Day-Forecast > .well > .day-2-marker').html('<h3 class="pull-left">'+moment().add(2, 'days').format('L')+'</h3><h2 class="pull-right data-temp">'+(data.list[13].main.temp - 273.15).toFixed(0)+'&deg;'+'C</h2>');
                 console.log(moment().add(3, 'days').format('L'));
-                $('#Desktop-5-Day-Forecast > .well > .day-3-marker').html('<h3 class="pull-left">'+moment().add(3, 'days').format('L')+'</h3><h2 class="pull-right">'+data.list[20].main.temp+'</h2>');
-                $('#Mobile-5-Day-Forecast > .well > .day-3-marker').html('<h3 class="pull-left">'+moment().add(3, 'days').format('L')+'</h3><h2 class="pull-right">'+data.list[20].main.temp+'</h2>');
+                $('#Desktop-5-Day-Forecast > .well > .day-3-marker').html('<h3 class="pull-left">'+moment().add(3, 'days').format('L')+'</h3><h2 class="pull-right data-temp">'+(data.list[20].main.temp - 273.15).toFixed(0)+'&deg;'+'C</h2>');
+                $('#Mobile-5-Day-Forecast > .well > .day-3-marker').html('<h3 class="pull-left">'+moment().add(3, 'days').format('L')+'</h3><h2 class="pull-right data-temp">'+(data.list[20].main.temp - 273.15).toFixed(0)+'&deg;'+'C</h2>');
                 console.log(moment().add(4, 'days').format('L'));
-                $('#Desktop-5-Day-Forecast > .well > .day-4-marker').html('<h3 class="pull-left">'+moment().add(4, 'days').format('L')+'</h3><h2 class="pull-right">'+data.list[27].main.temp+'</h2>');
-                $('#Mobile-5-Day-Forecast > .well > .day-4-marker').html('<h3 class="pull-left">'+moment().add(4, 'days').format('L')+'</h3><h2 class="pull-right">'+data.list[27].main.temp+'</h2>');
+                $('#Desktop-5-Day-Forecast > .well > .day-4-marker').html('<h3 class="pull-left">'+moment().add(4, 'days').format('L')+'</h3><h2 class="pull-right data-temp">'+(data.list[27].main.temp - 273.15).toFixed(0)+'&deg;'+'C</h2>');
+                $('#Mobile-5-Day-Forecast > .well > .day-4-marker').html('<h3 class="pull-left">'+moment().add(4, 'days').format('L')+'</h3><h2 class="pull-right data-temp">'+(data.list[27].main.temp - 273.15).toFixed(0)+'&deg;'+'C</h2>');
                 console.log(moment().add(5, 'days').format('L'));
-                $('#Desktop-5-Day-Forecast > .well > .day-5-marker').html('<h3 class="pull-left">'+moment().add(5, 'days').format('L')+'</h3><h2 class="pull-right">'+data.list[34].main.temp+'</h2>');
-                $('#Mobile-5-Day-Forecast > .well > .day-5-marker').html('<h3 class="pull-left">'+moment().add(5, 'days').format('L')+'</h3><h2 class="pull-right">'+data.list[34].main.temp+'</h2>');
+                $('#Desktop-5-Day-Forecast > .well > .day-5-marker').html('<h3 class="pull-left">'+moment().add(5, 'days').format('L')+'</h3><h2 class="pull-right data-temp">'+(data.list[34].main.temp - 273.15).toFixed(0)+'&deg;'+'C</h2>');
+                $('#Mobile-5-Day-Forecast > .well > .day-5-marker').html('<h3 class="pull-left">'+moment().add(5, 'days').format('L')+'</h3><h2 class="pull-right data-temp">'+(data.list[34].main.temp - 273.15).toFixed(0)+'&deg;'+'C</h2>');
                 
                 // $('.cloud').addClass('hidden');
                 
