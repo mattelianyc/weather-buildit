@@ -7,10 +7,6 @@
     src: url(../assets/fonts/ChaletLondonNineteenSixty.ttf);
 }
 @font-face {
-    font-family: MIA;
-    src: url(../assets/fonts/MIACANES.ttf);
-}
-@font-face {
     font-family: Sixties;
     src: url(../assets/fonts/Sixties.ttf);
 }
@@ -24,8 +20,6 @@
     position: relative;
     z-index: 32000;
 }
-
-
 
 .google-map {
     position: absolute;
@@ -41,9 +35,6 @@
     position: relative;
     z-index: -2;
 }   
-
-
-
 
 /*start-footer css*/
 footer {
