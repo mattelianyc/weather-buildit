@@ -1,11 +1,16 @@
 body {
-	background: #00b4ff;
+	background: rgba(0,180,255,0.5);
 	color: #333;
 	font: 100% Arial, Sans Serif;
 	height: 100vh;
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden;
+	background:#0D343A;
+background:-webkit-gradient(linear,0% 0%,0% 100%, from(rgba(13,52,58,1) ), to(#000000)  );
+background: -moz-linear-gradient(top, rgba(13,52,58,1) 0%, rgba(0,0,0,1) 100%);
+
+overflow:hidden;
 }
 
 #background-wrap {
@@ -15,7 +20,8 @@ body {
 	position: fixed;
 	right: 0;
 	top: 0;
-	z-index: -1;
+	z-index: 1;
+	background: rgba(0,180,255,0.5);
 }
 
 /* KEYFRAMES */
