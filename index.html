@@ -185,7 +185,7 @@
                         $('.rain').remove();   
                     }
                     
-                    if(data.weather[0].main !== 'Fog') {
+                    if(data.weather[0].main == 'Fog') {
                         $('.fog').show();
                         $('#background-wrap').css('background', 'rgba(0,180,255,0.4');
                     }
