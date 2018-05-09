@@ -20,7 +20,7 @@ body {
 	right: 0;
 	top: 0;
 	z-index: 1;
-	background: rgba(0,180,255,0.5);
+	background: rgba(0,180,255,0.72);
 }
 
 /* KEYFRAMES */
@@ -104,6 +104,115 @@ body {
 	transform: scale(0.55);
 }
 
+.x6 {
+	-webkit-animation: animateCloud 40s linear infinite;
+	-moz-animation: animateCloud 40s linear infinite;
+	animation: animateCloud 40s linear infinite;
+	
+	-webkit-transform: scale(0.7);
+	-moz-transform: scale(0.7);
+	transform: scale(0.7);
+}
+
+.x7 {
+	-webkit-animation: animateCloud 32s linear infinite;
+	-moz-animation: animateCloud 32s linear infinite;
+	animation: animateCloud 32s linear infinite;
+	
+	-webkit-transform: scale(0.4);
+	-moz-transform: scale(0.4);
+	transform: scale(0.4);
+}
+.x8 {
+	-webkit-animation: animateCloud 22s linear infinite;
+	-moz-animation: animateCloud 22s linear infinite;
+	animation: animateCloud 22s linear infinite;
+	
+	-webkit-transform: scale(0.35);
+	-moz-transform: scale(0.35);
+	transform: scale(0.35);
+}
+.x9 {
+	-webkit-animation: animateCloud 26s linear infinite;
+	-moz-animation: animateCloud 26s linear infinite;
+	animation: animateCloud 26s linear infinite;
+	
+	-webkit-transform: scale(0.22);
+	-moz-transform: scale(0.22);
+	transform: scale(0.22);
+}
+
+.x10 {
+	-webkit-animation: animateCloud 27s linear infinite;
+	-moz-animation: animateCloud 27s linear infinite;
+	animation: animateCloud 27s linear infinite;
+	
+	-webkit-transform: scale(0.45);
+	-moz-transform: scale(0.45);
+	transform: scale(0.45);
+}
+
+.x11 {
+	-webkit-animation: animateCloud 47s linear infinite;
+	-moz-animation: animateCloud 47s linear infinite;
+	animation: animateCloud 47s linear infinite;
+	
+	-webkit-transform: scale(0.54);
+	-moz-transform: scale(0.54);
+	transform: scale(0.54);
+}
+
+.x12 {
+	-webkit-animation: animateCloud 16s linear infinite;
+	-moz-animation: animateCloud 16s linear infinite;
+	animation: animateCloud 16s linear infinite;
+	
+	-webkit-transform: scale(0.18);
+	-moz-transform: scale(0.18);
+	transform: scale(0.18);
+}
+
+.x13 {
+	-webkit-animation: animateCloud 60s linear infinite;
+	-moz-animation: animateCloud 60s linear infinite;
+	animation: animateCloud 60s linear infinite;
+	
+	-webkit-transform: scale(0.65);
+	-moz-transform: scale(0.65);
+	transform: scale(0.65);
+}
+
+.x14 {
+	-webkit-animation: animateCloud 70s linear infinite;
+	-moz-animation: animateCloud 70s linear infinite;
+	animation: animateCloud 70s linear infinite;
+	
+	-webkit-transform: scale(0.7);
+	-moz-transform: scale(0.7);
+	transform: scale(0.7);
+}
+
+.x15 {
+	-webkit-animation: animateCloud 28s linear infinite;
+	-moz-animation: animateCloud 28s linear infinite;
+	animation: animateCloud 28s linear infinite;
+	
+	-webkit-transform: scale(0.34);
+	-moz-transform: scale(0.34);
+	transform: scale(0.34);
+}
+.x16 {
+	-webkit-animation: animateCloud 22s linear infinite;
+	-moz-animation: animateCloud 22s linear infinite;
+	animation: animateCloud 22s linear infinite;
+	
+	-webkit-transform: scale(0.35);
+	-moz-transform: scale(0.35);
+	transform: scale(0.35);
+}
+
+div[class^='x'] { display: none; }
+
 /* OBJECTS */
 
 .cloud {
@@ -133,7 +242,7 @@ body {
     background: #fff;
 	content: '';
 	position: absolute;
-	z-indeX: -1;
+	z-index: -1;
 }
 
 .cloud:after {
