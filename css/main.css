@@ -11,13 +11,23 @@
     src: url(../assets/fonts/Sixties.ttf);
 }
 
+#background-wrap > div > .cloud {
+    display: none;   
+}
+
+.col-sm-2 > .well > .col-xs-12 {
+    padding: 0;
+}
+
 .data-city-name {
     font-family: Sixties;
     font-size:164px;
     font-weight: bolder;
     /*text-shadow: -2px -2px white;*/
     color: rgb(191,43,48);
-    position: relative;
+    position: fixed;
+    top: 0;   
+    right: 15px;
     z-index: 32000;
 }
 
@@ -76,23 +86,66 @@ footer {
       }
       
     }
+    
     div[class$="-marker"] {
         width:100%; 
     }
     
+    
     div[class$="-marker"] > .pull-right.data-temp {
         position: absolute;
-        bottom: 0;
-        right:15px;
+        bottom: 24px;
     }
-    
     div[class$="-marker"] > .data-description {
         position: absolute;
         bottom: 0;
     }
-    div[class$="-marker"] > .pull-left {
+    div[class$="-marker"] > .data-day-of-the-week {
         margin-top: 0;
     }
+    
+    @media (max-width: 1111px) {     
+        div[class$="-marker"] > .pull-right.data-temp {   
+            bottom: 48px;
+        }
+        div[class$="-marker"] > .data-description {
+            text-align: left;
+        }
+        div[class$="-marker"] > .data-day-of-the-week {
+            font-size: 18px;
+        }
+    }
+    @media (max-width: 768px) {
+     
+      .data-city-name {
+        font-size:96px;
+      }
+      
+      .well { 
+        width: 90%;
+        margin-left:5%;
+        height: 100px;
+        border: 1px solid #e3e3e3; 
+        margin-bottom:15px !important;
+      }
+      
+        div[class$="-marker"] > .pull-right.data-temp {   
+            top: 0;
+            right: 0;
+            margin: 0;
+        }
+        div[class$="-marker"] > .data-description {
+            right: 0;
+            bottom: 0;
+            margin: 0;
+        }
+        div[class$="-marker"] > .data-day-of-the-week {
+            font-size: 24px;
+        }
+      
+      
+    }
+    
     .well {
         font-family: ChaletLondonNineteenSixty;
         color: rgba(4,34,121,1);

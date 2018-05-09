@@ -15,7 +15,6 @@
         <link rel="stylesheet" href="css/clouds.css" type="text/css" />
         <link rel="stylesheet" href="css/rain.css" type="text/css" />
         <link rel="stylesheet" href="css/main.css" type="text/css" />
-</style>
         
     </head>
 <body>
@@ -25,7 +24,8 @@
         </div>
     
         <!--if(forecast=rain.(then(()=>RAIN ANIMATION)))-->
-        <section class="rain"></section>
+        <div id="Rain"></div>
+        
         <!--if(forecast=clouds.(then(()=>CLOUD ANIMATION)))-->
         <div id="background-wrap">
             <div class="x1">
@@ -45,50 +45,66 @@
             </div>
         </div>
     
-        <div class="row text-center">
-            <div class="col-xs-12">
-                <h1 class="data-city-name"></h1>    
-            </div>    
-        </div>
+        <!--<div class="row text-center">-->
+        <!--    <div class="col-xs-12">-->
+        <!--        <h1 class="data-city-name"></h1>    -->
+        <!--    </div>    -->
+        <!--</div>-->
         
-        <div class="row text-center">
-            <h2 class="data-main"></h2>
+        <!--<div class="row text-center">-->
+            <!--<h2 class="data-main"></h2>-->
             <!--<h2 class="data-description"></h2>-->
             <!--<h2 class="data-humidity"></h2>-->
-            <h2 class="data-cloud-count"></h2>
-        </div>
+            <!--<h2 class="data-cloud-count"></h2>-->
+        <!--</div>-->
         
         <footer id="5-Day-Forecast" class="text-center">
-            <div class="col-sm-2 col-xs-12">
-                <div class="well active">
-                    <div class="day-0-marker"></div>
-                </div>
-            </div>
-            <div class="col-sm-2 col-xs-12">
-                <div class="well">
-                    <div class="day-1-marker"></div>
-                </div>
-            </div>
-            <div class="col-sm-2 col-xs-12">
-                <div class="well">
-                    <div class="day-2-marker"></div>
-                </div>
-            </div>
-            <div class="col-sm-2 col-xs-12">
-                <div class="well">
-                    <div class="day-3-marker"></div>
-                </div>
-            
-            </div>
-            <div class="col-sm-2 col-xs-12">
-                <div class="well">
-                    <div class="day-4-marker"></div>
-                </div>            
-            </div>
-            <div class="col-sm-2 col-xs-12">
-                <div class="well">
-                    <div class="day-5-marker"></div>
+            <div class="row text-center">
+                <div class="col-xs-12">
+                    <h1 class="data-city-name"></h1>    
                 </div>    
+            </div>
+            <div class="col-sm-2">
+                <div class="well active">
+                    <div class="col-xs-12">
+                        <div class="day-0-marker"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="well">
+                    <div class="col-xs-12">
+                        <div class="day-1-marker"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="well">
+                    <div class="col-xs-12">
+                        <div class="day-2-marker"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="well">
+                    <div class="col-xs-12">
+                        <div class="day-3-marker"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="well">
+                    <div class="col-xs-12">
+                        <div class="day-4-marker"></div>
+                    </div>            
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="well">
+                    <div class="col-xs-12">
+                        <div class="day-5-marker"></div>
+                    </div>    
+                </div>
             </div>
         </footer>
     
@@ -96,12 +112,13 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>    
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>        
         <script type="text/javascript" src="js/rain.js"></script>
+        
 <script>
 
 $(document).ready(function() {
-
+    navigator.geolocation.getCurrentPosition(success, error);    
     var coordinates;
-
+    
     function success(pos) {
         coordinates = pos.coords;
         $.get(`//api.openweathermap.org/data/2.5/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&APPID=4c8a4dcecc4abbf15e4f748eed4a4410`,(data)=>{
@@ -110,23 +127,17 @@ $(document).ready(function() {
              
              for(let i=0;i<=6;i++) {
                 if (i==0) {
-                    $('#5-Day-Forecast > .col-sm-2 > .well > .day-'+i+'-marker').html('<h3 class="pull-left">'+moment().format('dddd')+'</h3><h4 class="data-description">'+data.list[0].weather[0].description+'</h4><h2 class="pull-right data-temp">'+(((data.list[0].main.temp - 273.15/*Kelvin*/).toFixed(0)*9/5)+32)+'&deg;'+'F</h2>');
-                    $('#5-Day-Forecast > .col-xs-12 > .well > .day-'+i+'-marker').html('<h3 class="pull-left">'+moment().format('dddd')+'</h3><h4 class="data-description">'+data.list[0].weather[0].description+'</h4><h2 class="pull-right data-temp">'+(((data.list[0].main.temp - 273.15/*Kelvin*/).toFixed(0)*9/5)+32)+'&deg;'+'F</h2>');    
+                    $('#5-Day-Forecast > div > .well > div >.day-'+i+'-marker').html('<h3 class="data-day-of-the-week pull-left">'+moment().format('dddd')+'</h3><h4 class="data-description">'+data.list[0].weather[0].description+'</h4><h2 class="pull-right data-temp">'+(((data.list[0].main.temp - 273.15/*Kelvin*/).toFixed(0)*9/5)+32)/*C to F*/+'&deg;'+'F</h2>');
                 }else if(i==1) {
-                    $('#5-Day-Forecast > .col-sm-2 > .well > .day-'+i+'-marker').html('<h3 class="pull-left">'+moment().add(1, 'days').format('dddd')+'</h3><h4 class="data-description">'+data.list[6].weather[0].description+'</h4><h2 class="pull-right data-temp">'+(((data.list[6].main.temp_max - 273.15/*Kelvin*/).toFixed(0)*9/5)+32)+'&deg;'+'F</h2>');
-                    $('#5-Day-Forecast > .col-xs-12 > .well > .day-'+i+'-marker').html('<h3 class="pull-left">'+moment().add(1, 'days').format('dddd')+'</h3><h4 class="data-description">'+data.list[6].weather[0].description+'</h4><h2 class="pull-right data-temp">'+(((data.list[6].main.temp_max - 273.15/*Kelvin*/).toFixed(0)*9/5)+32)+'&deg;'+'F</h2>');
+                    $('#5-Day-Forecast > div > .well > div >.day-'+i+'-marker').html('<h3 class="data-day-of-the-week pull-left">'+moment().add(1, 'days').format('dddd')+'</h3><h4 class="data-description">'+data.list[6].weather[0].description+'</h4><h2 class="pull-right data-temp">'+(((data.list[6].main.temp_max - 273.15/*Kelvin*/).toFixed(0)*9/5)+32)/*C to F*/+'&deg;'+'F</h2>');
                 }else if(i==2) {
-                    $('#5-Day-Forecast > .col-sm-2 > .well > .day-'+i+'-marker').html('<h3 class="pull-left">'+moment().add(2, 'days').format('dddd')+'</h3><h4 class="data-description">'+data.list[13].weather[0].description+'</h4><h2 class="pull-right data-temp">'+(((data.list[13].main.temp_max - 273.15/*Kelvin*/).toFixed(0)*9/5)+32)+'&deg;'+'F</h2>');
-                    $('#5-Day-Forecast > .col-xs-12 > .well > .day-'+i+'-marker').html('<h3 class="pull-left">'+moment().add(2, 'days').format('dddd')+'</h3><h4 class="data-description">'+data.list[13].weather[0].description+'</h4><h2 class="pull-right data-temp">'+(((data.list[13].main.temp_max - 273.15/*Kelvin*/).toFixed(0)*9/5)+32)+'&deg;'+'F</h2>');
+                    $('#5-Day-Forecast > div > .well > div >.day-'+i+'-marker').html('<h3 class="data-day-of-the-week pull-left">'+moment().add(2, 'days').format('dddd')+'</h3><h4 class="data-description">'+data.list[13].weather[0].description+'</h4><h2 class="pull-right data-temp">'+(((data.list[13].main.temp_max - 273.15/*Kelvin*/).toFixed(0)*9/5)+32)/*C to F*/+'&deg;'+'F</h2>');
                 }else if(i==3) {
-                    $('#5-Day-Forecast > .col-sm-2 > .well > .day-'+i+'-marker').html('<h3 class="pull-left">'+moment().add(3, 'days').format('dddd')+'</h3><h4 class="data-description">'+data.list[20].weather[0].description+'</h4><h2 class="pull-right data-temp">'+(((data.list[20].main.temp_max - 273.15/*Kelvin*/).toFixed(0)*9/5)+32)+'&deg;'+'F</h2>');
-                    $('#5-Day-Forecast > .col-xs-12 > .well > .day-'+i+'-marker').html('<h3 class="pull-left">'+moment().add(3, 'days').format('dddd')+'</h3><h4 class="data-description">'+data.list[20].weather[0].description+'</h4><h2 class="pull-right data-temp">'+(((data.list[20].main.temp_max - 273.15/*Kelvin*/).toFixed(0)*9/5)+32)+'&deg;'+'F</h2>');
+                    $('#5-Day-Forecast > div > .well > div >.day-'+i+'-marker').html('<h3 class="data-day-of-the-week pull-left">'+moment().add(3, 'days').format('dddd')+'</h3><h4 class="data-description">'+data.list[20].weather[0].description+'</h4><h2 class="pull-right data-temp">'+(((data.list[20].main.temp_max - 273.15/*Kelvin*/).toFixed(0)*9/5)+32)/*C to F*/+'&deg;'+'F</h2>');
                 }else if(i==4) {
-                    $('#5-Day-Forecast > .col-sm-2 > .well > .day-'+i+'-marker').html('<h3 class="pull-left">'+moment().add(4, 'days').format('dddd')+'</h3><h4 class="data-description">'+data.list[26].weather[0].description+'</h4><h2 class="pull-right data-temp">'+(((data.list[26].main.temp_max - 273.15/*Kelvin*/).toFixed(0)*9/5)+32)+'&deg;'+'F</h2>');
-                    $('#5-Day-Forecast > .col-xs-12 > .well > .day-'+i+'-marker').html('<h3 class="pull-left">'+moment().add(4, 'days').format('dddd')+'</h3><h4 class="data-description">'+data.list[26].weather[0].description+'</h4><h2 class="pull-right data-temp">'+(((data.list[26].main.temp_max - 273.15/*Kelvin*/).toFixed(0)*9/5)+32)+'&deg;'+'F</h2>');
+                    $('#5-Day-Forecast > div > .well > div >.day-'+i+'-marker').html('<h3 class="data-day-of-the-week pull-left">'+moment().add(4, 'days').format('dddd')+'</h3><h4 class="data-description">'+data.list[26].weather[0].description+'</h4><h2 class="pull-right data-temp">'+(((data.list[26].main.temp_max - 273.15/*Kelvin*/).toFixed(0)*9/5)+32)/*C to F*/+'&deg;'+'F</h2>');
                 }else if(i==5) {
-                    $('#5-Day-Forecast > .col-sm-2 > .well > .day-'+i+'-marker').html('<h3 class="pull-left">'+moment().add(5, 'days').format('dddd')+'</h3><h4 class="data-description">'+data.list[33].weather[0].description+'</h4><h2 class="pull-right data-temp">'+(((data.list[33].main.temp_max - 273.15/*Kelvin*/).toFixed(0)*9/5)+32)+'&deg;'+'F</h2>');
-                    $('#5-Day-Forecast > .col-xs-12 > .well > .day-'+i+'-marker').html('<h3 class="pull-left">'+moment().add(5, 'days').format('dddd')+'</h3><h4 class="data-description">'+data.list[33].weather[0].description+'</h4><h2 class="pull-right data-temp">'+(((data.list[33].main.temp_max - 273.15/*Kelvin*/).toFixed(0)*9/5)+32)+'&deg;'+'F</h2>');
+                    $('#5-Day-Forecast > div > .well > div >.day-'+i+'-marker').html('<h3 class="data-day-of-the-week pull-left">'+moment().add(5, 'days').format('dddd')+'</h3><h4 class="data-description">'+data.list[33].weather[0].description+'</h4><h2 class="pull-right data-temp">'+(((data.list[33].main.temp_max - 273.15/*Kelvin*/).toFixed(0)*9/5)+32)/*C to F*/+'&deg;'+'F</h2>');
                 }  
             }
                 
@@ -141,11 +152,13 @@ $(document).ready(function() {
             // IF NO CLOUDS IN SKY rm CLOUDS
             if(data.list[0].clouds.all === 0 ) {
                 $('#background-wrap').html('');
+            } else {
+                $('#background-wrap > div > .cloud').show();                
             }
             
             // IF NO RAIN IN SKY rm RAIN
-            if(data.list[0].weather[0].main !== 'Rain'){
-                $('.rain').css('display','none');
+            if(data.list[0].weather[0].main == 'Rain'){
+                $('#rain').html('<section class="rain"></section>');
             }
             
         });
@@ -160,8 +173,6 @@ $(document).ready(function() {
             navigator.geolocation.getCurrentPosition(showPosition);
         }
     }
-    
-    navigator.geolocation.getCurrentPosition(success, error);    
     
 });
 </script>
