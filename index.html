@@ -139,6 +139,7 @@
         <script type="text/javascript" src="js/rain.js"></script>
         
         <script>
+        
         const WEATHER_API_BASE_URL = '//api.openweathermap.org/data/2.5/';
         
         $(document).ready(function() {
@@ -184,7 +185,7 @@
                         $('.rain').remove();   
                     }
                     
-                    if(data.weather[0].main == 'Fog') {
+                    if(data.weather[0].main !== 'Fog') {
                         $('.fog').show();
                         $('#background-wrap').css('background', 'rgba(0,180,255,0.4');
                     }
@@ -196,8 +197,6 @@
             function getFiveDayForecast(coordinates) {
 
                 $.get(`${WEATHER_API_BASE_URL}forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&APPID=4c8a4dcecc4abbf15e4f748eed4a4410`,(data)=>{
-                    
-                    console.log(data);
                     
                     $('.data-city-name').text(data.city.name);
                     
@@ -219,7 +218,6 @@
                                 return a-b;
                             });
                         }
-                        console.log(dailyTemperatureArray);
                         day++;
                         $('.day-'+day+'-marker').html('<h3 class="data-day-of-the-week pull-left">'+moment().add(day, 'days').format('dddd')+'</h3><h4 class="data-description">'+data.list[startOfDayIndexArray[day]].weather[0].description+'</h4><h2 class="pull-right data-temp">'+dailyTemperatureArray[8]+'&deg; / '+dailyTemperatureArray[0]+'&deg;F</h2>');
                         
